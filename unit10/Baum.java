@@ -39,7 +39,7 @@ public class Baum {
         root.addChild(new Baum("spam.txt"));
         return root;
     }
-
+/*
     static void printTree(Baum baum){
         System.out.println(baum.label);
         for(baum child : baum.children){
@@ -49,7 +49,7 @@ public class Baum {
             }
         }
     }
-
+*/
     public static void main(String[] args) {
         Baum fsTree = filesystemTree();
     }
