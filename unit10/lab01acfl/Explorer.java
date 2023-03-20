@@ -204,7 +204,15 @@ public class Explorer {
      */
     public static void explore(ArrayList<String> path, int steps) {
         // TODO build a recursive function
-
+        String whereWeAre = path.get(path.size()-1);
+        System.out.println("We are at "+ whereWeAre);
+        if (steps == 0) return;
+        for(String next : map.getNeighbors(whereWeAre)){
+           // System.out.println("We can get to " + next);
+            ArrayList<String> pathNext = new ArrayList<String>(path);
+            pathNext.add(next);
+            explore(pathNext, steps-1);
+       }
     }
 
     public static void main(String[] args) {
