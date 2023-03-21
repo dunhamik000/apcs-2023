@@ -1,7 +1,7 @@
 package unit10;
 
 import java.util.Arrays;
-
+import java.math.*;
 public class Scramble {
 
     /**
@@ -79,7 +79,18 @@ public class Scramble {
      * @param arr array of integers to shuffle
      */
     public static void shuffle(int arr[]) {
-        // TODO
+        //To shuffle an array a of n elements (indices 0..n-1):
+        //for i from n−1 downto 1 do
+        //j ← random integer such that 0 ≤ j ≤ i
+        //exchange a[j] and a[i]
+        int n = arr.length;
+        for (int i = n-1; i >0; i--){
+            double x = Math.random();
+            int j =(int)Math.floor(x*(i+1));
+                    int temp = arr[j];
+                    arr[j]=arr[i];
+                    arr[i]=temp;
+            }
     }
 
     public static void main(String args[]) {
