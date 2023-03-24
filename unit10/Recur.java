@@ -88,6 +88,32 @@ public class Recur {
         return 4 + mystery(x - 1);
     }
 
+    // First it calls mystery(111,74)
+    // Next it calls mystery(74,37)
+    // mystery(74,37) returns 37
+    // mystery(111,74) returns 37
+    public static int mystery(int a, int b) {
+        if (a%b == 0)
+            return b;
+        else {
+            return mystery(b, a%b);
+        }
+    }
+
+    // First it call mystery1(4,2)
+    // Next it call mystery1(3,3)
+    // Next it calls mystery1(2,4)
+    // mystery1(2,4) returns 2
+    // mystery1(3,3) returns 5
+    // mystery1(4,2) returns 7
+    public static int mystery1(int x, int y) {
+        if (x<y)
+            return x;
+        else {
+            return y + mystery1(x-1, y+1);
+        }
+    }
+
     public static void main(String[] args) {
 
         // Consider function fun3
@@ -115,6 +141,10 @@ public class Recur {
 
         // Fix function mystery so that mystery(10) == 32
          System.out.println(mystery(10));
+
+         System.out.println(mystery(111, 74));
+
+         System.out.println(mystery1(4, 2));
 
     }
 
