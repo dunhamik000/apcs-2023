@@ -78,14 +78,36 @@ public class Recur {
     // takes in an int and returns an int 
     // does 4 and then adds on two it each time
     // input 10, output 37
+
+    // First it calls mystery(10)
+    // Next it calls mystery(9)
+    // Next it calls mystery(8)
+    // Next it calls mystery(7)
+    // Next it calls mystery(6)
+    // Next it calls mystery(5)
+    // Next it calls mystery(4)
+    // Next it calls mystery(3)
+    // Next it calls mystery(2)
+    // Next it calls mystery(1)
+    // mystery(1) returns 1
+    // mystery(2) returns 5
+    // mystery(3) returns 9
+    // mystery(4) returns 13
+    // mystery(5) returns 17
+    // mystery(6) returns 21
+    // mystery(7) returns 25
+    // mystery(8) returns 29
+    // mystery(9) returns 33
+    // mystery(10) returns 37
+    // To get to 32 instead you would do return 2*mystery(x-2) because half of 10 is 5 and x times two five times would get to 32
     public static int mystery(int x) {
         if (x <= 1)
             return 1;
         // return mystery(x - 1) + mystery(x - 2);
-        // return 2 * mystery(x - 2);
+       return 2 * mystery(x - 2);
         // return 2 * mystery(x - 1);
         // return 4 * mystery(x - 4);
-        return 4 + mystery(x - 1);
+        //return 4 + mystery(x - 1);
     }
 
     // First it calls mystery(111,74)
