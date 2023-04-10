@@ -15,8 +15,11 @@ public class Maze {
      * @param line the values to be placed in the maze.
      */
     public Maze(int rows, int cols, String line) {
-        // TODO part a
-
+        for(int r = 0; r < rows; r++){
+            for(int c = 0; c < cols; c++){
+                
+            }
+        }
     }
 
     /**

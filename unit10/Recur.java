@@ -6,6 +6,19 @@ public class Recur {
     // Then it will times 1 by 3 and then keep timsing by three until it gets 
     // to the number n that it imputed 
     // input 5, output 234
+
+    //first it in 5
+    // then it runs 4
+    // then it runs 3
+    // then it runs 2
+    // then it runs 1
+    // then it runs 0
+    // fun3(0) returns 1
+    // fun3(1) returns 3
+    // fun3(2) returns 9
+    // fun3(3) returns 27
+    // fun(4) returns 81
+    // fun3(5) returs 243
     public static int fun3(int n) {
         if (n == 0)
             return 1;
