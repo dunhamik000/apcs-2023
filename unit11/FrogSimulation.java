@@ -51,7 +51,7 @@ public class FrogSimulation {
      * Simulates a frog attempting to reach the goal as described in part (a).
      * Returns true if the frog successfully reached or passed the goal during the
      * simulation;
-     * false otherwise.
+     * false otherwise
      */
     public boolean simulate() {
         int hop = 0;
