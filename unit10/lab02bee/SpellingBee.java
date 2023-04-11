@@ -7,16 +7,30 @@ import java.util.Arrays;
 
 public class SpellingBee {
 
-    private char[] letters;
-    private char mustUse;
+    private static char[] letters;
+    private static char mustUse;
 
     public SpellingBee(char[] letters, char mustUse) {
         this.letters = letters;
         this.mustUse = mustUse;
     }
 
-    public boolean checkWord(String word) {
-        // TODO implement me!
+    public static boolean checkWord(String word) {
+        int count;
+        if((word.length()<4)||(word.indexOf(mustUse)==-1)){
+            return false;
+        }
+        for(int i = 0; i<word.length(); i++){
+            count = 0;
+            for(int x = 0; x< letters.length; x++){
+                if(word.charAt(i)==letters[x]){
+                    count++;
+                }
+            }
+            if(count==0){
+                return false;
+            }
+        }
         return true;
     }
 
@@ -46,23 +60,25 @@ public class SpellingBee {
     public static void main(String[] args) {
         String[] words = loadFile("words_dropped.txt").split("\n");
         System.out.println("Loaded " + words.length + " words");
-        // TODO solve me!
-        // SpellingBee bee = new SpellingBee("ranglty".toCharArray(), 'y');
-
-
-        // TODO sort words!
-
-        // TODO what position in the sorted list is the word "search" ?
-        Arrays.sort(words);
-        int n =0;
-        for(String word: words){
-            n++;
-            if(word.equals("potato")){
-                System.out.println("Found potato at: "+n);
+        
+        SpellingBee bee = new SpellingBee("ranglty".toCharArray(), 'y');
+        for(String check: words){
+            if(checkWord(check)){
+                System.out.println(check);
             }
         }
 
-        String findMe = "potato";
+
+        Arrays.sort(words);
+        int n =0;
+        for(String word: words){
+            if(word.equals("search")){
+                System.out.println("Found search at: "+n);
+            }
+            n++;
+        }
+
+        String findMe = "search";
 
         int begin = 0;
         int end = words.length -1;

@@ -15,9 +15,13 @@ public class Maze {
      * @param line the values to be placed in the maze.
      */
     public Maze(int rows, int cols, String line) {
+        int x=0;
+        solution = false;
+        maze=new char[rows][cols];
         for(int r = 0; r < rows; r++){
             for(int c = 0; c < cols; c++){
-                
+                maze[r][c]=line.charAt(x);
+                x++;
             }
         }
     }
@@ -56,8 +60,19 @@ public class Maze {
      * @param c current column index
      */
     private void check(int r, int c) {
-        // TODO part b
-
+        if((0<=r)&&(r<maze.length)&&(0<=c)&&(c<maze[0].length)&&(maze[r][c]!='#')&&(maze[r][c]!='^')){
+            if(maze[r][c]=='$'){
+                solution=true;
+                return;
+            }
+            else{
+                maze[r][c]='^';
+                check(r+1, c);
+                check(r-1, c);
+                check(r, c+1);
+                check(r, c-1);
+            }
+        }
     }
 
     /**
@@ -66,8 +81,12 @@ public class Maze {
      * @return true if the maze has a path from Start (@) to End ($).
      */
     public boolean hasSolution() {
-        // TODO part c
-        return false; // replace me!
+        String x = getStart();
+        int b = x.indexOf(" ");
+        int r = Integer.parseInt(x.substring(0, b));
+        int c = Integer.parseInt(x.substring(b+1));
+        check(r, c);
+        return solution;
 
     }
 
