@@ -1,18 +1,68 @@
 package unit11;
+import unit10.Recur;
 
 public class EulerFriday {
 
     public static void main(String[] args) {
 
-        // 1
+        // 1: Find the sum of all the multiples of 3 or 5 below 1000.
         int sum = 0;
         for (int i = 0; i < 1000; i++) {
-
+            if((i%3==0)||(i%5==0)){
+                sum=sum+i;
+            }
         }
-        System.out.println(sum);
+        System.out.println("Answer of 1: " + sum);
 
-        // 2
 
+        // 2: By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms
+        sum=0;
+        int a = 1;
+        int b = 2;
+        while(b<4000000){
+            if(b%2 == 0){
+                sum += b;
+            }
+            int c = a+b;
+            a = b;
+            b = c;
+        }
+        System.out.println("Answer of 2: " + sum);
+
+
+        // 3: What is the largest prime factor of the number 600851475143 ?
+        long factorMe = 600851475143l;
+        int factor = 2;
+        while(factorMe > factor){
+            if(factorMe % factor == 0){
+                factorMe /= factor;
+            }
+            else {
+                factor++;
+            }
+        }
+        System.out.println("Answer of 3: " + factor);
+
+
+        // 4: Find the largest palindrome made from the product of two 3-digit numbers.
+        int largest = 0;
+        for(int i = 100; i <= 999; i++){
+            for(int x = 100; x <= 999; x++){
+                int product = i*x;
+                String productString = Integer.toString(product);
+                if(Recur.pot(productString)){
+                    if(product > largest){
+                        largest = product;
+                    }
+                }
+            }
+        }
+        System.out.println("Answer of 4: " + largest);
+
+        // 5: What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+        for(int i = 1; i<=20; i++){
+            gcd(i);
+        }
     }
 
     static int[] prob8scaffold() {
@@ -49,4 +99,16 @@ public class EulerFriday {
         return nums;
     }
 
+    public int gcd(int a, int b){
+        if(a%b == 0){
+            return b;
+        }
+        else{
+            return gcd(b,a%b);
+        }
+    }
+
+    public int lcm(int a, int b){
+        return (a%b)/gcd(a,b);
+    }
 }
