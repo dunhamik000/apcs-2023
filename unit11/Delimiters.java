@@ -26,8 +26,13 @@ public class Delimiters {
      * part (a).
      */
     public ArrayList<String> getDelimitersList(String[] tokens) {
-        /* to be implemented in part (a) */
-        return null; // replace me
+        ArrayList<String> del = new ArrayList<String>();
+        for(int i = 0; i < tokens.length; i++){
+            if(tokens[i].equals(openDel) || tokens[i].equals(closeDel)){
+                del.add(tokens[i]);
+            }
+        }
+        return del; 
     }
 
     /**
@@ -36,8 +41,23 @@ public class Delimiters {
      * Precondition: delimiters contains only valid open and close delimiters.
      */
     public boolean isBalanced(ArrayList<String> delimiters) {
-        /* to be implemented in part (b) */
-        return false; // replace me
+        int openDelCount = 0;
+        int closeDelCount = 0;
+        for(int i = 0; i < delimiters.size(); i++){
+            if(delimiters.get(i).equals(openDel)){
+                openDelCount++;
+            }
+            if(delimiters.get(i).equals(closeDel)){
+                closeDelCount++;
+            }
+            if(openDelCount<closeDelCount){
+                return false;
+            }
+        }
+        if(openDelCount == closeDelCount){
+            return true;
+        }
+        return false; 
     }
 
     // There may be instance variables, constructors, and methods that are not
