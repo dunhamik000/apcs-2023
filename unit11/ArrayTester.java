@@ -18,8 +18,11 @@ public class ArrayTester {
      * Postcondition: arr2D is unchanged.
      */
     public static int[] getColumn(int[][] arr2D, int c) {
-        // TODO part a
-        return null; // replace me!
+        int[] col = new int[arr2D.length];
+        for(int r = 0; r < arr2D.length; r++){
+            col[r] = arr2D[r][c];
+        }
+        return col; 
     }
 
     /**
@@ -51,8 +54,28 @@ public class ArrayTester {
      * square has at least one row.
      */
     public static boolean isLatin(int[][] square) {
-        // TODO part b
-        return false; // replace me!
+        int[] arr = new int[square.length];
+        int[] base = new int[square.length];
+        for(int x = 0; x < square[0].length; x++){
+            base[x] = square[0][x];
+        }
+        for(int r = 0; r < square.length; r++){
+            for(int c = 0; c < square[r].length; c++){
+                arr[c] = square[r][c];
+            }
+            if(containsDuplicates(arr) == true || hasAllValues(arr, base) == false){
+                return false;
+            }
+        }
+        for(int c = 0; c < square.length; c++){
+            for(int r = 0; r < square[c].length; r++){
+                arr[r] = square[r][c];
+            }
+            if(containsDuplicates(arr) == true || hasAllValues(arr, base) == false){
+                return false;
+            }
+        }
+        return true; 
     }
 
     public static void check(boolean test) throws AssertionError {

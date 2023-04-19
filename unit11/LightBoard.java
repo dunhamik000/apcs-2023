@@ -16,7 +16,17 @@ public class LightBoard {
      * Postcondition: each light has a 40% probability of being set to on.
      */
     public LightBoard(int numRows, int numCols) {
-        /* TODO to be implemented in part (a) */
+        lights = new boolean[numRows][numCols]; 
+        for(int r = 0; r < lights.length; r++){
+            for(int c = 0; c < lights[r].length; c++){
+                if(Math.random() <= 0.4){
+                    lights[r][c] = true;
+                }
+                else{
+                    lights[r][c] = false;
+                }
+            }
+        }
 
     }
 
@@ -26,9 +36,23 @@ public class LightBoard {
      * Precondition: row and col are valid indexes in lights.
      */
     public boolean evaluateLight(int row, int col) {
-        /* TODO to be implemented in part (b) */
-
-        return false; // replace me!
+        int count = 0;
+        for(int r = 0; r < lights.length; r++){
+            if(lights[r][col] == true){
+                count++;
+            }
+        }
+        if(lights[row][col] == true){
+            if(count%2==0){
+                return false;
+            }
+        }
+        if(lights[row][col] == false){
+            if(count%3 == 0){
+                return true;
+            }
+        }
+        return lights[row][col];
     }
 
     // There may be additional instance variables, constructors, and methods not
