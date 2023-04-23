@@ -41,6 +41,7 @@ public class Bat {
 
     public static void main(String[] args) {
         // why do we need to instantiate a Bat?
+        // because it is not a static method
         Bat b = new Bat();
         // b.conditionalTest(3, -2);
 
