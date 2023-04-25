@@ -7,10 +7,10 @@ public class Bird {
 
         String s = "turkey";
         // predict before uncommenting
-        // System.out.println(s.substring(1, 4));
+         System.out.println(s.substring(1, 4));
 
         String t = new String("turkey");
-        // System.out.println(s == t);
+         System.out.println(s == t);
 
         int x = 3 % 7;
         // System.out.println(x);
