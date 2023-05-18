@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my cool webspagefsd</title>
+</head>
+<body>
+    
+<h1>This is good stuff</h1>
+<h3>by Mikiah</h3>
+
+<form action="" id="form">
+input a score:
+<input type="text" name="score" id="score">
+
+<button>push me!</button>
+
+<div id="grade"></div>
+
+
+</form>
+
+<script>
+
+document.getElementById("form").attachEvent('onsubmit', function(evt){
+        evt.preventDefault();
+        window.history.back();
+        let value = document.getElementById("score").textContent;
+        let grade = value*100;
+
+        document.getElementById("grade").innerText = "my grade is: "+grade;        
+    });
+
+</script>
+
+</body>
+</html>
