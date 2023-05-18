@@ -9,6 +9,6 @@ Steps:
 - Transfer the code into javascript
 - Make into a webpage
 
-What I Will Learn:
+I Will Learn:
 - Learm how to code something in javascript
 - Make an interactive website thing
