@@ -14,6 +14,7 @@ public class Grade {
         System.out.println("What is your current percentage in the class? ");
         gradeBefore = scan.nextDouble();
 
+        // letter grade before
         String gradeBeforeLetter = letters(gradeBefore/100);
 
         System.out.println("How many points are earned on the test/assignment? ");
@@ -22,41 +23,52 @@ public class Grade {
         System.out.println("How many points is the test/assignment out of? ");
         outOf = scan.nextDouble();
 
+        // grade on the assignment/test
         double assignmentPercent = points/outOf;
         String assignmentGrade = letters(assignmentPercent);
         
-        System.out.println("How many points are in the section that has the test/assignment? ");
+        System.out.println("How many points do you have in the section that has the test/assignment? ");
         sectionPoints = scan.nextDouble();
 
         System.out.println("How many points is the section that has the test/assignment out of? ");
         sectionPointsOutOf = scan.nextDouble();
 
-        System.out.println("How many points are in the section that has the test/assignment? ");
-        sections = scan.nextDouble();
-
-        System.out.println("What? ");
-        double percentO = scan.nextDouble();
-
         System.out.println("How many sections does the class have other than the section with the test/assignment? ");
         int secNum = scan.nextInt();
 
+        // find what the sections contain
         double [] scores = new double[secNum];
         double [] percent = new double[secNum];
-        for(int x=1; x<= secNum; x++){
+        for(int x=0; x< secNum; x++){
             System.out.println("How many points do you have in this section? ");
             scores [x] = scan.nextDouble();
             System.out.println("How many points is this section out of? ");
-            scores[x] = scan.nextDouble();
+            scores[x] /= scan.nextDouble();
             System.out.println("What percent of the grade is  this section? ");
             percent[x] = scan.nextDouble();
         }
+
+        // find what percent the original section was out of
+        double percentO = 0;
+        for(int x = 0; x< percent.length; x++){
+            percentO += percent[x];
+        }
+        percentO = 100 - percentO;
         
+        // figure out the final percentage
+        double finall = (((sectionPoints+points)/(sectionPointsOutOf + outOf))*percentO);
+        for(int b = 0; b<scores.length; b++){
+            finall+=((scores[b])*percent[b]);
+        }
+
+        // calculate the letter grade of the class
+        String finalLetter= letters(finall);
 
         System.out.println("Letter grade of the test/assignment: " + assignmentGrade);
         System.out.println("Overall letter grade in the class before: " + gradeBeforeLetter);
         System.out.println("Overall grade in the class before as a percentage: " + gradeBefore);
-        System.out.println("Overall letter grade in the class after: ");
-        System.out.println("Overall grade in the class after as a percentage: ");
+        System.out.println("Overall letter grade in the class after: " + finalLetter);
+        System.out.println("Overall grade in the class after as a percentage: " + finall);
     }
     
     public static String letters(double a){
