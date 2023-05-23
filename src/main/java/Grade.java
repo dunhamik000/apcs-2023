@@ -40,11 +40,11 @@ public class Grade {
         double [] scores = new double[secNum];
         double [] percent = new double[secNum];
         for(int x=0; x< secNum; x++){
-            System.out.println("How many points do you have in this section? ");
+            System.out.println("How many points do you have in section "+ (x+1));
             scores [x] = scan.nextDouble();
             System.out.println("How many points is this section out of? ");
             scores[x] /= scan.nextDouble();
-            System.out.println("What percent of the grade is  this section? ");
+            System.out.println("What percent of the grade is this section? ");
             percent[x] = scan.nextDouble();
         }
 
@@ -63,6 +63,7 @@ public class Grade {
 
         // calculate the letter grade of the class
         String finalLetter= letters(finall);
+        finall = Math.round(finall);
 
         System.out.println("Letter grade of the test/assignment: " + assignmentGrade);
         System.out.println("Overall letter grade in the class before: " + gradeBeforeLetter);
