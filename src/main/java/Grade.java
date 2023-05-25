@@ -63,7 +63,9 @@ public class Grade {
 
         // calculate the letter grade of the class
         String finalLetter= letters(finall);
+        finall = finall*100; 
         finall = Math.round(finall);
+        finall = finall/100;
 
         System.out.println("Letter grade of the test/assignment: " + assignmentGrade);
         System.out.println("Overall letter grade in the class before: " + gradeBeforeLetter);

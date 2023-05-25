@@ -4,26 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my cool webspagefsd</title>
+    <title>What's Your Grade?</title>
 </head>
 <body>
     
-<h1>This is good stuff</h1>
+<h1>What's Your Grade?</h1>
 <h3>by Mikiah</h3>
 
-<form action="" id="form">
-input a score:
-<input type="text" name="score" id="score">
 
+What's the grade of the test/assignment out of?
+<input type="number" name="outOf" id="outOf">
+
+<div id="outOf"></div>
+
+
+What is your current percentage in the class? 
+<input type="number" name="gradeBefore" id="gradeBefore">
+
+<div id="gradeBefore"></div>
+
+
+How many points are in the section that has the test/assignment? 
+<input type="number" name="sectionPoints" id="sectionPoints">
+
+<div id="sectionPoints"></div>
+
+
+How many points is the section that has the test/assignment out of? 
+<input type="number" name="sectionPointsOutOf" id="sectionPointsOutOf">
+
+<div id="sectionPointsOutOf"></div>
+
+
+How many sections does the class have other than the section with the test/assignment? 
+<input type="number" name="secNum" id="secNum">
+
+<div id="enduphere"></div>
+
+
+<button onclick="sections();"> Add a section </button>
+<br>
 <button> Enter </button>
+<br>
+<br>
 
-<div id="grade"></div>
+<div>
+    <input type="range" id="volume" name="volume"
+           min="0" max="score">
+    <label for="score">Score</label>
+  </div>
 
-
-</form>
 
 <script>
+function sections() {
 
+    document.getElementById("enduphere").innerHTML +=
+    `
+    How many points do you have in this section?
+    <input type="number" name="scores" id="scores">
+
+    How many points is this section out of?
+    <input type="number" name="scores" id="scores">
+
+    What percentage of the grade is this section?
+    <input type="number" name="percent" id="percent">
+
+    <br>
+    
+    `;
+
+}
 document.getElementById("form").attachEvent('onsubmit', function(evt){
         evt.preventDefault();
         window.history.back();
