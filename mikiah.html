@@ -9,42 +9,38 @@
 <body>
     
 <h1>What's Your Grade?</h1>
-<h3>by Mikiah</h3>
+<h3>Find out what your grade will be after a new test or assignment is added to the gradebook</h3>
 
 
-What's the grade of the test/assignment out of?
-<input type="number" name="outOf" id="outOf">
+<div>
+    <label for="outOf">What's the grade of the test/assignment out of?</label>
+    <input type="number" name="outOf" id="outOf" />
+</div>
 
-<div id="outOf"></div>
+<div>
+    <label for="outOf">What is your current percentage in the class?</label>
+    <input type="number" name="gradeBefore" id="gradeBefore" />
+</div>
 
+<div>
+    <label for="outOf">How many points are in the section that has the test/assignment?</label>
+    <input type="number" name="sectionPoints" id="sectionPoints" />
+</div>
 
-What is your current percentage in the class? 
-<input type="number" name="gradeBefore" id="gradeBefore">
+<div>
+    <label for="outOf">How many points is the section that has the test/assignment out of?</label>
+    <input type="number" name="sectionPointsOutOf" id="sectionPointsOutOf" />
+</div>
 
-<div id="gradeBefore"></div>
-
-
-How many points are in the section that has the test/assignment? 
-<input type="number" name="sectionPoints" id="sectionPoints">
-
-<div id="sectionPoints"></div>
-
-
-How many points is the section that has the test/assignment out of? 
-<input type="number" name="sectionPointsOutOf" id="sectionPointsOutOf">
-
-<div id="sectionPointsOutOf"></div>
-
-
-How many sections does the class have other than the section with the test/assignment? 
-<input type="number" name="secNum" id="secNum">
-
-<div id="enduphere"></div>
-
+<div>
+    <label for="outOf">How many sections does the class have other than the section with the test/assignment?</label>
+    <input type="number" name="secNum" id="secNum" />
+</div>
 
 <button onclick="sections();"> Add a section </button>
 <br>
-<button> Enter </button>
+<br>
+<button onclick="test();"> Enter </button>
 <br>
 <br>
 
@@ -54,6 +50,8 @@ How many sections does the class have other than the section with the test/assig
     <label for="score">Score</label>
   </div>
 
+  <br>
+  <div id="enduphere2"></div>
 
 <script>
 function sections() {
@@ -74,6 +72,26 @@ function sections() {
     `;
 
 }
+
+function test() {
+
+document.getElementById("enduphere2").innerHTML +=
+`
+Letter grade of the test/assignment: 
+<br>
+Overall letter grade in the class before: 
+<br>
+Overall grade in the class before as a percentage: 
+<br>
+Overall letter grade in the class after: 
+<br>
+Overall grade in the class after as a percentage: 
+<br>
+
+`;
+
+}
+
 document.getElementById("form").attachEvent('onsubmit', function(evt){
         evt.preventDefault();
         window.history.back();
