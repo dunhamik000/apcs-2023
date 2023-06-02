@@ -62,7 +62,7 @@ public class Grade {
         }
 
         // calculate the letter grade of the class
-        String finalLetter= letters(finall);
+        String finalLetter= letters(finall/100);
         finall = finall*100; 
         finall = Math.round(finall);
         finall = finall/100;

@@ -13,29 +13,26 @@
 
 
 <div>
-    <label for="outOf">What's the grade of the test/assignment out of?</label>
-    <input type="number" name="outOf" id="outOf" />
+    <label for="outOff">What's the grade of the test/assignment out of?</label>
+    <input type="number" name="outOff" id="outOff" />
 </div>
 
 <div>
-    <label for="outOf">What is your current percentage in the class?</label>
-    <input type="number" name="gradeBefore" id="gradeBefore" />
+    <label for="gradeBeforee">What is your current percentage in the class?</label>
+    <input type="number" name="gradeBeforee" id="gradeBeforee" />
 </div>
 
 <div>
-    <label for="outOf">How many points are in the section that has the test/assignment?</label>
-    <input type="number" name="sectionPoints" id="sectionPoints" />
+    <label for="sectionPointss">How many points are in the section that has the test/assignment?</label>
+    <input type="number" name="sectionPointss" id="sectionPointss" />
 </div>
 
 <div>
-    <label for="outOf">How many points is the section that has the test/assignment out of?</label>
-    <input type="number" name="sectionPointsOutOf" id="sectionPointsOutOf" />
+    <label for="sectionPointsOutOff">How many points is the section that has the test/assignment out of?</label>
+    <input type="number" name="sectionPointsOutOff" id="sectionPointsOutOff" />
 </div>
 
-<div>
-    <label for="outOf">How many sections does the class have other than the section with the test/assignment?</label>
-    <input type="number" name="secNum" id="secNum" />
-</div>
+<div id="enduphere"></div>
 
 <button onclick="sections();"> Add a section </button>
 <br>
@@ -46,51 +43,128 @@
 
 <div>
     <input type="range" id="volume" name="volume"
-           min="0" max="score">
-    <label for="score">Score</label>
+           min="0" max="score*2" value="" step="0.5">
+    <label for="score">Score on test/assignment</label>
   </div>
 
   <br>
   <div id="enduphere2"></div>
 
 <script>
+let thing = 1;
+
 function sections() {
 
     document.getElementById("enduphere").innerHTML +=
     `
     How many points do you have in this section?
-    <input type="number" name="scores" id="scores">
+    <input type="number" name="scores" id="scores${thing}">
 
     How many points is this section out of?
-    <input type="number" name="scores" id="scores">
+    <input type="number" name="scores2" id="scores2${thing}">
 
     What percentage of the grade is this section?
-    <input type="number" name="percent" id="percent">
+    <input type="number" name="percent" id="percent${thing}">
 
     <br>
     
     `;
+    thing++
 
 }
 
 function test() {
 
+    let gradeBefore = document.getElementById("gradeBeforee").valueAsNumber;
+    let gradeBeforeLetter = letters(gradeBefore/100);
+    let outOf = document.getElementById("outOff").valueAsNumber;
+
+    let assignmentPercent = points/outOf;
+
+    let secPoints = document.getElementById("sectionPointss").valueAsNumber;
+    let sectionPointsOutOf = document.getElementById("sectionPointsOutOff").valueAsNumber;
+    let secNum = document.getElementById("secNumm").valueAsNumber;
+
+    let scores = [];
+    let percent = [];
+    for(let x=1; x < thing; x++){
+            scores [x] = document.getElementById(`scores${x}`).valueAsNumber;
+            scores[x] /= document.getElementById(`scores2${x}`).valueAsNumber;
+            percent[x] = document.getElementById(`percent${x}`).valueAsNumber;
+        }
+
+    let percentO = 0;
+    for(let x = 0; x< percent.length; x++){
+            percentO += percent[x];
+        }
+    percentO = 100 - percentO;
+
+    let finall = (((sectionPoints+points)/(sectionPointsOutOf + outOf))*percentO);
+        for(let b = 0; b<scores.length; b++){
+            finall+=((scores[b])*percent[b]);
+        }
+
+    let finalLetter= letters(finall/100);
+    finall = finall*100; 
+    finall = Math.round(finall);
+    finall = finall/100;
+
+
 document.getElementById("enduphere2").innerHTML +=
 `
-Letter grade of the test/assignment: 
+Letter grade of the test/assignment: ${assignmentGrade}
 <br>
-Overall letter grade in the class before: 
+Overall letter grade in the class before: ${gradeBeforeLetter}
 <br>
-Overall grade in the class before as a percentage: 
+Overall grade in the class before as a percentage: ${gradeBefore}
 <br>
-Overall letter grade in the class after: 
+Overall letter grade in the class after: ${finalLetter}
 <br>
-Overall grade in the class after as a percentage: 
+Overall grade in the class after as a percentage: ${finall}
 <br>
 
 `;
 
 }
+
+function letter(a) {
+    let x;
+    if(a>=0.93){
+            x = "A";
+        }
+        else if(a>=0.90){
+            x = "A-";
+        }
+        else if(a>=0.87){
+            x = "B+";
+        }
+        else if(a>=0.83){
+            x = "B";
+        }
+        else if(a>=0.80){
+            x = "B-";
+        }
+        else if(a>=0.77){
+            x = "C+";
+        }
+        else if(a>=0.73){
+            x = "C";
+        }
+        else if(a>=0.70){
+            x = "C-";
+        }
+        else if(a>=0.67){
+            x = "D+";
+        }
+        else if(a>=0.60){
+            x = "D";
+        }
+        else{
+            x = "F";
+        }
+        return x;
+}
+
 
 document.getElementById("form").attachEvent('onsubmit', function(evt){
         evt.preventDefault();
