@@ -29,7 +29,7 @@
     </div>
 
     <div>
-        <label for="sectionPointss">How many points are in the section that has the test/assignment?</label>
+        <label for="sectionPointss">How many points do you have in the section that has the test/assignment?</label>
         <input type="number" name="sectionPointss" id="sectionPointss" />
     </div>
 
@@ -87,10 +87,9 @@
 
             let sectionPoints = document.getElementById("sectionPointss").valueAsNumber;
             let sectionPointsOutOf = document.getElementById("sectionPointsOutOff").valueAsNumber;
-            let secNum = document.getElementById("secNumm").valueAsNumber;
 
-            let scores = [];
-            let percent = [];
+            let scores = Array(thing).fill(0);
+            let percent = Array(thing).fill(0);
             for (let x = 1; x < thing; x++) {
                 scores[x] = document.getElementById(`scores${x}`).valueAsNumber;
                 scores[x] /= document.getElementById(`scores2${x}`).valueAsNumber;
@@ -102,8 +101,10 @@
                 percentO += percent[z];
             }
             percentO = 100 - percentO;
+            console.log(percentO);
 
             let finall = (((sectionPoints + points) / (sectionPointsOutOf + outOf)) * percentO);
+            console.log(finall);
             for (let b = 0; b < scores.length; b++) {
                 finall += ((scores[b]) * percent[b]);
             }
@@ -126,12 +127,13 @@ Overall letter grade in the class after: ${finalLetter}
 <br>
 Overall grade in the class after as a percentage: ${finall}
 <br>
+<br>
 
 `;
 
         }
 
-        function letter(a) {
+        function letters(a) {
             let x;
             if (a >= 0.93) {
                 x = "A";
