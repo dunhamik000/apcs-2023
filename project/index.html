@@ -115,7 +115,7 @@
             finall = finall / 100;
 
 
-            document.getElementById("enduphere2").innerHTML +=
+            document.getElementById("enduphere2").innerHTML =
                 `
 Letter grade of the test/assignment: ${assignmentGrade}
 <br>
@@ -129,7 +129,7 @@ Overall grade in the class after as a percentage: ${finall}
 <br>
 <br>
 
-`;
+`+document.getElementById("enduphere2").innerHTML;
 
         }
 
