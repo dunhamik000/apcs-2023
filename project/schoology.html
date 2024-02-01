@@ -79,14 +79,12 @@
             let assignmentPercent = points / outOf;
             let assignmentGrade = letters(assignmentPercent);
 
-            let sectionPoints = document.getElementById("sectionPointss").valueAsNumber;
-            let sectionPointsOutOf = document.getElementById("sectionPointsOutOff").valueAsNumber;
+            let sectionPercent = document.getElementById("sectionPercent").valueAsNumber;
 
             let scores = Array(thing).fill(0);
             let percent = Array(thing).fill(0);
             for (let x = 1; x < thing; x++) {
                 scores[x] = document.getElementById(`scores${x}`).valueAsNumber;
-                scores[x] /= document.getElementById(`scores2${x}`).valueAsNumber;
                 percent[x] = document.getElementById(`percent${x}`).valueAsNumber;
             }
 
@@ -97,7 +95,7 @@
             percentO = 100 - percentO;
             console.log(percentO);
 
-            let finall = (((sectionPoints + points) / (sectionPointsOutOf + outOf)) * percentO);
+            let finall = ((sectionPercent) * percentO);
             console.log(finall);
             for (let b = 0; b < scores.length; b++) {
                 finall += ((scores[b]) * percent[b]);
