@@ -31,13 +31,8 @@
     </div>
 
     <div>
-        <label for="sectionPointss">How many points do you have in the section that has the test/assignment?</label>
-        <input type="number" name="sectionPointss" id="sectionPointss" />
-    </div>
-
-    <div>
-        <label for="sectionPointsOutOff">How many points is the section that has the test/assignment out of?</label>
-        <input type="number" name="sectionPointsOutOff" id="sectionPointsOutOff" />
+        <label for="sectionPercent">How percent do you have in the section that has the test/assignment?</label>
+        <input type="number" name="sectionPercent" id="sectionPercent" />
     </div>
 
     <div id="enduphere"></div>
@@ -59,11 +54,8 @@
 
             document.getElementById("enduphere").innerHTML +=
                 `
-    How many points do you have in this section?
+    What percent do you have in this section?
     <input type="number" name="scores" id="scores${thing}">
-
-    How many points is this section out of?
-    <input type="number" name="scores2" id="scores2${thing}">
 
     What percentage of the grade is this section?
     <input type="number" name="percent" id="percent${thing}">
